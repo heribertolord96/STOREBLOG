@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Blogmodels\Evento;
 use App\Blogmodels\Tienda;
-use App\Blogmodels\Producto;
+use App\Blogmodels\Tag;
 
-
-class TiendaController extends Controller
+class EventoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class TiendaController extends Controller
      */
     public function index()
     {
-        $tiendas =Tienda::orderBy('nombre','desc')->paginate(3);
-        return view('admin.tiendas.index', compact('tiendas'));
-    }
+        $eventos =Evento::orderBy('nombre','ASC')->paginate(20);
+        return view('admin.eventos.index', compact('eventos'));
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +28,9 @@ class TiendaController extends Controller
      */
     public function create()
     {
-        return view('admin.tiendas.create');
+        $eventos = Evento::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $tags       = Tag::orderBy('nombre', 'ASC')->get();
+        return view('admin.eventos.create', compact('eventos', 'tags'));
     }
 
     /**
@@ -39,9 +41,9 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
-        $tienda = Tienda::create($request->all());
-        return redirect()->route('tiendas.edit', $tienda->id)
-        ->with('info', 'Tienda creada con éxito');
+        $evento = Evento::create($request->all());
+        return redirect()->route('eventos.edit', $evento->id)
+        ->with('info', 'Evento agregado con éxito');
     }
 
     /**
@@ -52,10 +54,9 @@ class TiendaController extends Controller
      */
     public function show($id)
     {
-        $tienda = Tienda::find($id);
-        return view('admin.tiendas.show', compact('tienda'));
+        $evento = Evento::find($id);
+        return view('admin.eventos.show', compact('evento'));
     }
-    
 
     /**
      * Show the form for editing the specified resource.
@@ -65,8 +66,8 @@ class TiendaController extends Controller
      */
     public function edit($id)
     {
-        $tienda = Tienda::find($id);
-        return view('admin.tiendas.edit', compact('tienda'));
+        $evento = Evento::find($id);
+        return view('admin.eventos.edit', compact('evento'));
     }
 
     /**
@@ -78,10 +79,10 @@ class TiendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tienda = Tienda::find($id);
-        $tienda->fill($request->all())->save();
-        return redirect()->route('tiendas.edit', 
-        $tienda->id)->with('info', 'Info de tienda actualizada con éxito');
+        $evento = Evento::find($id);
+        $evento->fill($request->all())->save();
+        return redirect()->route('.eventos.edit', 
+        $evento->id)->with('info', 'Info de evento actualizada con éxito');
     }
 
     /**
@@ -92,7 +93,8 @@ class TiendaController extends Controller
      */
     public function destroy($id)
     {
-        $tienda = Tienda::find($id)->delete();
+        $evento = Evento::find($id)->delete();
+
         return back()->with('info', 'Eliminado correctamente');
     }
 }

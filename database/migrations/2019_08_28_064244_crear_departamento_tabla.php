@@ -16,6 +16,7 @@ class CrearDepartamentoTabla extends Migration
         Schema::create('departamentos', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nombre',100);
+            $table->string('slug', 128)->unique();
             $table->string('codigo',100);
             $table->string('descripcion',100);
             $table->string('file', 128)->nullable();

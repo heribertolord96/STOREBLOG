@@ -13,8 +13,16 @@ class CrearAnuncioTabla extends Migration
      */
     public function up()
     {
+        
         Schema::create('anuncios', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
+
+            $table->string('nombre',100);
+            $table->string('descripcion',255);
+            $table->string('slug', 128)->unique();
+            $table->string('file',128)->nullable();
+            $table->string('inicio_vigencia',128)->nullable();
+            $table->string('fin_vigencia',128)->nullable();
             $table->timestamps();
             $table->charset='utf8mb4';
             $table->collation='utf8mb4_spanish_ci';

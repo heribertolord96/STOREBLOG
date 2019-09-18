@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Blogmodels\Promocion;
 use App\Blogmodels\Tienda;
-use App\Blogmodels\Producto;
+use App\Blogmodels\Tag;
 
-
-class TiendaController extends Controller
+class PromoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class TiendaController extends Controller
      */
     public function index()
     {
-        $tiendas =Tienda::orderBy('nombre','desc')->paginate(3);
-        return view('admin.tiendas.index', compact('tiendas'));
-    }
+        $promos =Promocion::orderBy('nombre','ASC')->paginate(20);
+        return view('admin.promos.index', compact('promos'));
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +28,9 @@ class TiendaController extends Controller
      */
     public function create()
     {
-        return view('admin.tiendas.create');
+        $promos = Promocion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $tags       = Tag::orderBy('nombre', 'ASC')->get();
+        return view('admin.promos.create', compact('promos', 'tags'));
     }
 
     /**
@@ -39,9 +41,9 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
-        $tienda = Tienda::create($request->all());
-        return redirect()->route('tiendas.edit', $tienda->id)
-        ->with('info', 'Tienda creada con éxito');
+        $promo = Promocion::create($request->all());
+        return redirect()->route('promos.edit', $promo->id)
+        ->with('info', 'Promocion agregado con éxito');
     }
 
     /**
@@ -52,10 +54,9 @@ class TiendaController extends Controller
      */
     public function show($id)
     {
-        $tienda = Tienda::find($id);
-        return view('admin.tiendas.show', compact('tienda'));
+        $promo = Promocion::find($id);
+        return view('admin.promos.show', compact('promo'));
     }
-    
 
     /**
      * Show the form for editing the specified resource.
@@ -65,8 +66,8 @@ class TiendaController extends Controller
      */
     public function edit($id)
     {
-        $tienda = Tienda::find($id);
-        return view('admin.tiendas.edit', compact('tienda'));
+        $promo = Promocion::find($id);
+        return view('admin.promos.edit', compact('promo'));
     }
 
     /**
@@ -78,10 +79,10 @@ class TiendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tienda = Tienda::find($id);
-        $tienda->fill($request->all())->save();
-        return redirect()->route('tiendas.edit', 
-        $tienda->id)->with('info', 'Info de tienda actualizada con éxito');
+        $promo = Promocion::find($id);
+        $promo->fill($request->all())->save();
+        return redirect()->route('promos.edit', 
+        $promo->id)->with('info', 'Info de promocion actualizada con éxito');
     }
 
     /**
@@ -92,7 +93,8 @@ class TiendaController extends Controller
      */
     public function destroy($id)
     {
-        $tienda = Tienda::find($id)->delete();
+        $promo = Promocion::find($id)->delete();
+
         return back()->with('info', 'Eliminado correctamente');
     }
 }

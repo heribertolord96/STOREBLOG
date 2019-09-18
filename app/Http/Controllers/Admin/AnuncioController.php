@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Blogmodels\Anuncio;
 use App\Blogmodels\Tienda;
-use App\Blogmodels\Producto;
+use App\Blogmodels\Tag;
 
-
-class TiendaController extends Controller
+class AnuncioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class TiendaController extends Controller
      */
     public function index()
     {
-        $tiendas =Tienda::orderBy('nombre','desc')->paginate(3);
-        return view('admin.tiendas.index', compact('tiendas'));
-    }
+        $anuncios =Anuncio::orderBy('nombre','ASC')->paginate(20);
+        return view('admin.anuncios.index', compact('anuncios'));
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +28,10 @@ class TiendaController extends Controller
      */
     public function create()
     {
-        return view('admin.tiendas.create');
+        $tiendas = Tienda::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $anuncios = Anuncio::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $tags       = Tag::orderBy('nombre', 'ASC')->get();
+        return view('admin.anuncios.create', compact('anuncios', 'tags'));
     }
 
     /**
@@ -39,9 +42,9 @@ class TiendaController extends Controller
      */
     public function store(Request $request)
     {
-        $tienda = Tienda::create($request->all());
-        return redirect()->route('tiendas.edit', $tienda->id)
-        ->with('info', 'Tienda creada con éxito');
+        $anuncio = Anuncio::create($request->all());
+        return redirect()->route('anuncios.edit', $anuncio->id)
+        ->with('info', 'Anuncio agregado con éxito');
     }
 
     /**
@@ -52,10 +55,9 @@ class TiendaController extends Controller
      */
     public function show($id)
     {
-        $tienda = Tienda::find($id);
-        return view('admin.tiendas.show', compact('tienda'));
+        $anuncio = Anuncio::find($id);
+        return view('admin.anuncios.show', compact('anuncio'));
     }
-    
 
     /**
      * Show the form for editing the specified resource.
@@ -65,8 +67,9 @@ class TiendaController extends Controller
      */
     public function edit($id)
     {
-        $tienda = Tienda::find($id);
-        return view('admin.tiendas.edit', compact('tienda'));
+        $tiendas = Tienda::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $anuncio = Anuncio::find($id);
+        return view('admin.anuncios.edit', compact('anuncio'));
     }
 
     /**
@@ -78,10 +81,10 @@ class TiendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tienda = Tienda::find($id);
-        $tienda->fill($request->all())->save();
-        return redirect()->route('tiendas.edit', 
-        $tienda->id)->with('info', 'Info de tienda actualizada con éxito');
+        $anuncio = Anuncio::find($id);
+        $anuncio->fill($request->all())->save();
+        return redirect()->route('.anuncios.edit', 
+        $anuncio->id)->with('info', 'Info de anuncio actualizada con éxito');
     }
 
     /**
@@ -92,7 +95,7 @@ class TiendaController extends Controller
      */
     public function destroy($id)
     {
-        $tienda = Tienda::find($id)->delete();
+        $anuncio = Anuncio::find($id)->delete();
         return back()->with('info', 'Eliminado correctamente');
     }
 }

@@ -1,10 +1,15 @@
 @extends("theme/lte/layout")
 @section('contenido')
 <div class="container">
-        <div class="card card-success">
-                        <h4  bgcolor="#E6E6FA" class="card-title text-warning" >Ver Tienda</h4>                    
+        <div class="card card-default">
+                        <h4  class="card-title bg-warning" >Ver Tienda</h4>                    
                 <div class="card-header success with-border ">
                     <h2 class="card-title success">{{ $tienda->nombre }}</h2>
+                    <div class="card-tools pull-right">
+                            <button type="button" class="btn btn-card-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                  </button>
+                    </div>
                 </div>
                 <div class="card-tools pull-right">
                         <button type="button" class="btn btn-card-tool" >
@@ -33,16 +38,13 @@
                                                               <i class="fa fa-fw fa-camera"></i>Galeria
                                                         </a>
                                                           </button>
-                </div>         
-                                
-        
-                <div class="panel panel-default">                      
-                    <div class="panel-body">
+                </div>                        
+                    <div class="card-body">
                                 <img class="d-block w-100" height="100" width="150 "
                                 src="{{ $tienda->file }}" 
                                  alt="First slide">
                         </div>
-                    <div class="panel-footer">
+                    <div class="card-footer">
                             <p><strong>Descripción: <br>
                             </strong> {{ $tienda->descripcion }}</p>
                             <table class="table table-bordered">
@@ -64,8 +66,10 @@
                                     </tbody>
                                 </table>
                     </div>
+                
                 </div>
-                </div>
+                @@include("admin.tiendas.partials.tienda_tab")
+                
             
     </div>
 @endsection

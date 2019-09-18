@@ -16,6 +16,7 @@ class CrearTiendaTabla extends Migration
         Schema::create('tiendas', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nombre',100);
+            $table->string('slug', 128)->unique();
             $table->text('descripcion',500);
             $table->time('hora_apertura')->nullable();
             $table->time('hora_cierre')->nullable();

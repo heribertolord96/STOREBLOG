@@ -10,10 +10,14 @@ $factory->define(App\Blogmodels\Tienda::class, function (Faker $faker) {
 	$title = $faker->sentence(4);
 
     return [
-        'nombre' => $faker->name,
-        //'slug' => str_slug($title),
-        'descripcion' => $faker->text(500),
-        //'hora_apertura' => $faker->time(),
+        'nombre' => $title,
+        'slug' 			=> $title,
+        'descripcion' => $faker->text(50),
+        'hora_apertura' => $faker->time(),
+        'hora_cierre' => $faker->time(),
+        'num_telefono' => $faker->phoneNumber (),
+        'email' => $faker->email(),
+        //'ubicacion_id' => rand(1,50),
         'file' => 'http://storeblog.test/images/atrr.png',
 
     ];

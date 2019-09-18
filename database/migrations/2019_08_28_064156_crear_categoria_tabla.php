@@ -16,7 +16,8 @@ class CrearCategoriaTabla extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->Increments('id');            
             $table->string('nombre',100);
-            $table->string('codigo',100);
+            $table->string('slug', 128)->unique();
+            $table->string('codigo',100)->unique();
             $table->string('descripcion',100);
             $table->string('file', 128)->nullable();
             $table->timestamps();

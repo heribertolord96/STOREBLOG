@@ -30,9 +30,11 @@
             </a>
           </button>
           <button type="button" class="btn btn-card-tool" >
-            <a  href="{{ route('tiendas.destroy', $tienda->id) }}">
-                <i class="fa fa-fw fa-trash warning"></i>
-            </a>
+              {!! Form::open(['route' => ['tiendas.destroy', $tienda->id], 'method' => 'DELETE']) !!}
+              <button class="btn-danger">
+                  <i class="fa fa-fw fa-trash "></i>
+              </button>                           
+          {!! Form::close() !!}
           </button>
             <button type="button" class="btn btn-card-tool" data-widget="collapse">
               <i class="fa fa-minus"></i>
@@ -42,22 +44,26 @@
           </div>
         </div>
         <!-- /.card-header -->
-        <div class="card-body" max-width="300" max-height="200">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="card-body"  >
+          <!--style
+            max-width:300px
+            max-height="200"-->
+            </style-->
+            <div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
-                <div class="carousel-inner" max-width="300" max-height="200">
+                <div class="carousel-inner" style="max-width:300px; max-height:200px; float:center;">
                   <div class="carousel-item active">
-                    <img max-width="300" max-height="200"  class="d-block w-100" src="{{ $tienda->file }}"   alt="First slide">
+                    <img style="max-width:300px, max-height:200px"  class="d-block w-100" src="{{ $tienda->file }}"   alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img max-width="300" max-height="200"  class="d-block w-100" src="/images/critor.png"    alt="Second slide">
+                    <img style=" max-width:300px, max-height:200px"  class="d-block w-100" src="/images/critor.png"    alt="Second slide">
                   </div>
                   <div class="carousel-item">
-                    <img max-width="300" max-height="200"  class="d-block w-100" src="/images/A29.jpg"   alt="Third slide">
+                    <img style=" max-width:300px, max-height:200px"  class="d-block w-100" src="/images/A29.jpg"   alt="Third slide">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -73,6 +79,10 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer no-padding">
+            <tr>
+                <p><b>Descripción: <br>
+                </b> {{ $tienda->descripcion }}</p>
+        </tr>
             <table class="table table-bordered">
                 <tbody>
                         <tr>
@@ -98,11 +108,5 @@
      {{ $tiendas->render() }}
     </div>
       <!-- /.card -->
-      
-                        
-                   
-
-                   
-            
 @endsection
 

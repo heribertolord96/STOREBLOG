@@ -16,15 +16,19 @@ class CrearProductoTabla extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('nombre',100);
+            $table->string('slug', 128)->unique();
             $table->string('descripcion',100);
-            $table->string('imagen',100);
-            $table->string('presentacion',100);
-            $table->string('precio',100);
+            $table->string('file',100)->nullable();
+            $table->string('presentacion',100)->nullable();
+            $table->string('precio',100)->nullable();
 
-            $table->unsignedInteger('categoria_id');
-            $table->unsignedInteger('departamento_id');
-            $table->unsignedInteger('tienda_id');
+            $table->unsignedInteger('categoria_id')->nullable();
+            $table->unsignedInteger('departamento_id')->nullable();
+            $table->unsignedInteger('tienda_id')->nullable();
 
+            $table->foreign('tienda_id')
+      ->references('id')->on('tiendas')
+      ->onDelete('restrict')->onUpdate('restrict');
             $table->foreign('categoria_id')
       ->references('id')->on('categorias')
       ->onDelete('restrict')->onUpdate('restrict');
@@ -35,9 +39,7 @@ class CrearProductoTabla extends Migration
       $table->timestamps();
       $table->charset='utf8mb4';
       $table->collation='utf8mb4_spanish_ci';
-            $table->foreign('tienda_id')
-      ->references('id')->on('tiendas')
-      ->onDelete('restrict')->onUpdate('restrict');
+            
         });
     }
 

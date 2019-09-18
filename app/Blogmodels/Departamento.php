@@ -4,16 +4,14 @@ namespace App\Blogmodels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tienda extends Model
+class Departamento extends Model
 {
     protected $fillable = [
-        'nombre','slug', 'descripcion', 'hora_apertura',
-        'hora_cierre','num_telefono','email','file','ubicacion_id'
+        'nombre','codigo', 'slug','descripcion', 'file'
     ];
 
     public function producto()
     {
         return $this->hasMany(Producto::class);
     }
-    
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TiendasTableSeeder extends Seeder
+class CategoriaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class TiendasTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Blogmodels\Tienda::class,100)->create();
+        factory(App\Blogmodels\Categoria::class, 60)->create();
     }
 }
