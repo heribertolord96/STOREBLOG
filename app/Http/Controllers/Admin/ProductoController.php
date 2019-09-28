@@ -22,6 +22,13 @@ class ProductoController extends Controller
         $productos =Producto::orderBy('nombre','ASC')->paginate(20);
         return view('admin.productos.index', compact('productos'));
     }   
+    public function listar_prod($id)
+    {
+        $tienda = Tienda::find($id);
+        $productos =Producto::orderBy('nombre','ASC')->paginate(2);
+        return view('admin.tiendas.lista_arts', compact('productos'));
+
+    }
 
     /**
      * Show the form for creating a new resource.

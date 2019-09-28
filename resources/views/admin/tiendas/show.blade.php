@@ -68,7 +68,7 @@
                     </div>
                 
                 </div>
-                @@include("admin.tiendas.partials.tienda_tab")
+                @include("admin.tiendas.partials.tienda_tab")
                 
             
     </div>

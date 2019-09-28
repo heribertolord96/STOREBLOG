@@ -1,4 +1,5 @@
-
+@extends("admin.tiendas.show")
+@section('tabs')   
       <!-- Custom Tabs -->
       <div class="card">
         <div class="card-header d-flex p-0">
@@ -21,14 +22,13 @@
         </div><!-- /.card-header -->
         <div class="card-body">
           <div class="tab-content">
-            el tab 1
-            @include("admin.tiendas.partials.tienda_tabs.productos")
+           a@include('admin.tiendas.lista_arts');
             
             <!-- /.tab-pane -->
-            @include("admin.tiendas.partials.tienda_tabs.promociones")
+            @include("admin.tiendas.partials.tienda_tabs.promociones");
             
             <!-- /.tab-pane -->
-            @include("admin.tiendas.partials.tienda_tabs.eventos")
+            @include("admin.tiendas.partials.tienda_tabs.eventos");
             
             <!-- /.tab-pane -->
           </div>
@@ -37,3 +37,5 @@
       </div>
       <!-- ./card -->
     
+ 
+      @endsection

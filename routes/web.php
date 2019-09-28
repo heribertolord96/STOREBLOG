@@ -21,6 +21,10 @@ Route::get('admin/tags','Admin\TagController@index')->name('tags');
 Route::resource('tags', 		'Admin\TagController');
 Route::get('admin/tiendas','Admin\TiendaController@index')->name('tiendas');
 Route::resource('tiendas', 	'Admin\TiendaController');
+//hijos de tienda
+Route::get('admin/productos','Admin\ProductoController@listar_prod')->name('productos');
+Route::resource('productos', 	'Admin\ProductoController');
+/////
 
 Route::get('admin/productos','Admin\ProductoController@index')->name('productos');
 Route::resource('productos', 'Admin\ProductoController');

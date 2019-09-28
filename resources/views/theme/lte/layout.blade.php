@@ -75,6 +75,9 @@
                             </div>
                         @endif
                                 @yield('contenido')
+                                <br>
+                                
+                                
                                   
                               </section>
                     </div>

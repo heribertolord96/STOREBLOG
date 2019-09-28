@@ -20,7 +20,7 @@ class TiendaController extends Controller
         $tiendas =Tienda::orderBy('nombre','desc')->paginate(3);
         return view('admin.tiendas.index', compact('tiendas'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -54,8 +54,10 @@ class TiendaController extends Controller
     {
         $tienda = Tienda::find($id);
         return view('admin.tiendas.show', compact('tienda'));
-    }
-    
+       // return view('admin.tiendas.lista_arts', compact('tienda'));
+
+           }
+   
 
     /**
      * Show the form for editing the specified resource.
