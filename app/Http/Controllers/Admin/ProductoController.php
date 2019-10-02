@@ -75,15 +75,15 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id,$id_tienda)
+    public function edit($id)
     {
         $tiendas = Tienda::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $departamentos = Departamento::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
         $producto = Producto::find($id);
-        $tiendas = Tienda::find($id_tienda);
-        return view('admin.productos.edit', compact('producto'));
+        return view('admin.productos.edit', 
+        compact('producto', 'tiendas','categorias','departamentos', 'tags'));
     }
 
     /**
@@ -112,5 +112,13 @@ class ProductoController extends Controller
         $producto = Producto::find($id)->delete();
 
         return back()->with('info', 'Eliminado correctamente');
+    }
+    public function tag($slug){ 
+        $productos = Producto::join ('producto_tags', function($query) use ($slug) {
+            $query->where('slug', $slug);
+        })
+        ->orderBy('id', 'DESC')->paginate(3);
+
+        return view('admin.productos.index', compact('productos'));
     }
 }

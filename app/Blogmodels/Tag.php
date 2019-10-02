@@ -10,8 +10,12 @@ class Tag extends Model
         'nombre', 'slug'
     ];
 
-    public function posts()
+    public function productos()
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Producto::class);
+    }
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class);
     }
 }

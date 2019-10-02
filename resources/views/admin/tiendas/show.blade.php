@@ -4,7 +4,7 @@
         <div class="card card-default">
                         <h4  class="card-title bg-warning" >Ver Tienda</h4>                    
                 <div class="card-header success with-border ">
-                    <h2 class="card-title success">{{ $tienda->nombre }}</h2>
+                    
                     <div class="card-tools pull-right">
                             <button type="button" class="btn btn-card-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>

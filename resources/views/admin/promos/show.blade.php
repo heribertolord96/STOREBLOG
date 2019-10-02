@@ -1,7 +1,8 @@
 @extends("theme/lte/layout")
 @section('contenido')
 <div class="container">
-        <div class="card card-default">                                           
+        <div class="card card-default">     
+                <h2 class="card-title success">{{ $promo->tienda->nombre }}</h2>                                       
                 <div class="card-header success with-border ">
                         <h4  class="card-title bg-warning" >Ver Promocion</h4>
                     <h2 class="card-title success">{{ $promo->nombre }}</h2>
@@ -23,22 +24,22 @@
                                     <tbody>
                                             <tr>
                                                     <td><b>Fecha de inicio:</b></td>
-                                                        <td>{{ $evento->fecha_inicio }}</td>                                        
+                                                        <td>{{ $promo->fecha_inicio }}</td>                                        
                                                 </tr>
                                                 <tr>
                                                   <td>
                                                       <b>Hora de inicio:</b>
                                                   </td>
-                                                  <td>{{ $evento->hora_inicio }}</td>
+                                                  <td>{{ $promo->hora_inicio }}</td>
                                                 </tr>
                                                     <tr><td><b>Fecha de finalizacion:</b></td>
-                                                      <td>{{ $evento->fecha_fin }}</td>                                     
+                                                      <td>{{ $promo->fecha_fin }}</td>                                     
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                             <b>Hora de finalizacion:</b>
                                                         </td>
-                                                        <td>{{ $evento->hora_fin }}</td>
+                                                        <td>{{ $promo->hora_fin }}</td>
                                                     </tr>
                                                    
                                                </tr>
@@ -67,6 +68,13 @@
                         </div>
                         <div class="card-body">
                             <p>Etiquetas :</p>
+                            <div class ="card-body">
+                                    @foreach($promo->tags as $tag)
+                                    <a href="{{ route('tag', $tag->slug) }}">
+                                        {{ $tag->nombre }}
+                                    </a>
+                                    @endforeach
+                            </div>
                         </div>
                     </div>
                 

@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
         $this->call(AnuncioTableSeeder::class);
         $this->call(DepartamentoTableSeeder::class);
         $this->call(ProductoTableSeeder::class);
+
+        $this->call(ProductoTagTableSeeder::class);
+        $this->call(PromoTagTableSeeder::class);
+        $this->call(AnuncioTagTableSeeder::class);
+        $this->call(EventoTagTableSeeder::class);
+        
     }
 }

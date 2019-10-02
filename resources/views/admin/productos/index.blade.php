@@ -11,9 +11,9 @@
             </a>
         </div>
         </div>
-        <div class="card-body row-md-12">
+        <div class="card-body row-md-12 row-md-offset-2">
             @foreach ($productos as $producto)
-            <div class="card card-default col-md-3  float-left">                
+            <div class="card card-default col-md-3 col-md-offset-1 float-left" >                
                 <div class="card-header with-border ">  
                     <div class="card-tools pull-right">
                         <button type="button" class="btn btn-card-tool" >
@@ -22,7 +22,7 @@
                       </a>
                         </button>
                         <button type="button" class="btn btn-card-tool" >
-                      <a  href="{{ route('productos.edit', $producto->id) }}">
+                      <a  href="{{ route('producto.edit', $producto->id) }}">
                           <i class="fa fa-fw fa-pen 50px"></i>
                       </a>
                     </button>
@@ -93,7 +93,9 @@
                                 </tr>
                                 <tr>
                                     <td><b>De venta en: </b></td>
-                                    <td>{{ $producto->tienda_id }}</td>
+                                    <td>
+                                    <a href="{{route('tienda',$producto->tienda->slug)}}">
+                                      {{ $producto->tienda->nombre }}</a></td>
                             </tr>
                                </tr>
                         </tbody>

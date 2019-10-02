@@ -15,5 +15,17 @@ class Tienda extends Model
     {
         return $this->hasMany(Producto::class);
     }
+    public function evento()
+    {
+        return $this->hasMany(Evento::class);
+    }
+    public function promo()
+    {
+        return $this->hasMany(Promo::class);
+    }
+    public function anuncio()
+    {
+        return $this->hasMany(Anuncio::class);
+    }
     
 }

@@ -1,7 +1,8 @@
 @extends("theme/lte/layout")
 @section('contenido')
 <div class="container">
-        <div class="card card-default">                                           
+        <div class="card card-default">  
+                <h2 class="card-title success">{{ $anuncio->tienda->nombre }}</h2>                                          
                 <div class="card-header success with-border ">
                         <h4  class="card-title bg-warning" >Ver Anuncio</h4>
                     <h2 class="card-title success">{{ $anuncio->nombre }}</h2>
@@ -55,6 +56,13 @@
                         </div>
                         <div class="card-body">
                             <p>Etiquetas :</p>
+                            <div class ="card-body">
+                                    @foreach($anuncio->tags as $tag)
+                                    <a href="{{ route('tag', $tag->slug) }}">
+                                        {{ $tag->nombre }}
+                                    </a>
+                                    @endforeach
+                            </div>
                         </div>
                     </div>
                 

@@ -1,7 +1,8 @@
 @extends("theme/lte/layout")
 @section('contenido')
 <div class="container">
-        <div class="card card-default">                                           
+        <div class="card card-default">          
+                <h2 class="card-title success">{{ $departamento->tienda->nombre }}</h2>                                  
                 <div class="card-header success with-border ">
                         <h4  class="card-title bg-warning" >Ver Evento</h4>
                     <h2 class="card-title success">{{ $evento->nombre }}</h2>

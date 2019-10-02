@@ -105,7 +105,8 @@
                                    
                                 <tr>
                                     <td><b>Disponible en: </b></td>
-                                    <td>{{ $promo->tienda_id }}</td>
+                                    <td><a href="{{route('tienda',$promo->tienda->slug)}}">
+                                        {{ $promo->tienda->nombre }}</a></td>
                             </tr>
                         </tbody>
                     </table>
