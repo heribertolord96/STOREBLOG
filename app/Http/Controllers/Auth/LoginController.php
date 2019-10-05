@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -19,7 +20,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/admin';
 
     /**
      * Create a new controller instance.
@@ -32,5 +33,8 @@ class LoginController extends Controller
     }
     public function index(){
         return view('seguridad.index');
+    }
+    public function username(){
+        return 'user_name';
     }
 }
