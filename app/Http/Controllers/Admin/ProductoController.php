@@ -113,12 +113,5 @@ class ProductoController extends Controller
 
         return back()->with('info', 'Eliminado correctamente');
     }
-    public function tag($slug){ 
-        $productos = Producto::join ('producto_tags', function($query) use ($slug) {
-            $query->where('slug', $slug);
-        })
-        ->orderBy('id', 'DESC')->paginate(3);
-
-        return view('admin.productos.index', compact('productos'));
-    }
+   
 }

@@ -30,7 +30,7 @@ class Promocion extends Model
 class PromocionTag extends Model
 {
     protected $fillable = [
-        'promocion_id','tag_id'
+        'promocion_id', 'tag_id'
     ];
 
     public function tienda()

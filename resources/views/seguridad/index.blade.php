@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Storeblog| Log in</title>
+  <title>Blog Mart | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
@@ -19,7 +19,7 @@
 <body class="hold-transition login-page">
 <div class="login-box form-group">
   <div class="login-logo">
-    <a href="{{route('inicio')}}"><b>Storeblog </b>QEM</a>
+    <a href="{{route('inicio')}}"><b>Blog Mart </b>Abstract</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -39,7 +39,7 @@
     <form action="{{route('login_post')}}" method="POST">
         @csrf
       <div class="form-group has-feedback">
-      <input type="text" name="usuario" autocomplete="off" class="form-control" value="{{old('usuario')}}" placeholder="User name">
+      <input type="text" name="user_name" autocomplete="off" class="form-control" value="{{old('user_name')}}" placeholder="User name">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

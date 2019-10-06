@@ -11,6 +11,6 @@ class PromoTagTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Blogmodels\PromocionTag::class, 20)->create();
+        factory(App\Blogmodels\PromocionTag::class, 10)->create();
     }
 }

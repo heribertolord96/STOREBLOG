@@ -2,11 +2,12 @@
 @section('contenido')
 <div class="card card-success">
   @section('titulo')
-      Articulos
+      Articulos| 
   @endsection
     <div class="panel panel-default-success">
         <div class="card-header with-border ">
-            
+            <h2>Tienda  <td>
+                  </h2>
             <h3 class="card-sub-title">Articulos</h3>
         </div>
         <div class="card-tool pull-right">

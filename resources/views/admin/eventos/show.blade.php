@@ -66,8 +66,8 @@
                             <p>Etiquetas :</p>
                             <div class ="card-body">
                                     @foreach($evento->tags as $tags)
-                                    <a href="{{ route('tags', $tag->slug) }}">
-                                        {{ $tag->nombre }}
+                                    <a href="{{route('tag',$evento->tag->slug)}}">
+                                     {{ $tag->nombre }}</a>
                                     </a>
                                     @endforeach
                             </div>

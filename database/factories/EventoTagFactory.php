@@ -11,7 +11,7 @@ $factory->define(App\Blogmodels\EventoTag::class, function (Faker $faker) {
 
     return [
         
-        'evento_id' 	=> rand(1,50),
+        'evento_id' 	=> rand(1,20),
         'tag_id' 	=> rand(1,50),
         
     ];

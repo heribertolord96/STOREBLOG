@@ -65,13 +65,8 @@
             </div>
         </div>
         <div class="card-body row-md-12">
-            ha bug
-            <div>
-              <div>
-                
-              </div>
-              {{session()->get('nombre_usuario')?? 'Invitado'}}
-            </div>
+            <h1>Welcome to</h1>
+            <h3>Blogmart</h3>
         </div>
 
 @endsection

@@ -16,7 +16,7 @@
                  <img src="{{asset ("assets/$theme/dist/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
-                 <a href="#" class="d-block"> {{session()->get('nombre_usuario')}} </a>
+                 <span class="d-block"> hola, {{session ()->get('rol_id') ?? 'Invitado'}} </span>
               </div>
               <div class="pull-right">
               <a href="{{route('logout')}}" class="btn btn-default btn-flat">Salir</a>

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Seguridad\Rol;
+use App\Models\Seguridad\Usuario;
+use Illuminate\Foundation\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -20,7 +22,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-    protected $redirectTo = '/admin/admin';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -33,6 +35,19 @@ class LoginController extends Controller
     }
     public function index(){
         return view('seguridad.index');
+    }
+    public function authenticated(Request $request, $user)
+    {
+        $roles = $user->roles()->where('estado', 1)->get();
+        if($roles->isNotEmpty()){
+            $user->setSession($roles ->toArray());
+            
+        }else{
+            $this ->guard()->logout();
+            $request->session()->invalidate();
+            return redirect('seguridad/login')->withErrors([
+                'Error' => 'Este usuario no tiene un rol activo']);
+        }
     }
     public function username(){
         return 'user_name';

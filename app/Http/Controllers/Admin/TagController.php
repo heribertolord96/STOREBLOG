@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TagStoreRequest;
 use App\Http\Requests\TagUpdateRequest;
 use App\Blogmodels\Tag;
+use App\Blogmodels\Producto;
 
 class TagController extends Controller
 {

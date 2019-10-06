@@ -11,8 +11,8 @@ $factory->define(App\Blogmodels\AnuncioTag::class, function (Faker $faker) {
 
     return [
         
-        'anuncio_id' 	=> rand(1,50),
-        'tag_id' 	=> rand(1,50),
+        'anuncio_id' 	=> rand(1,20),
+        'tag_id' 	=> rand(1,120),
         
     ];
 });

@@ -11,6 +11,6 @@ class AnuncioTableSeedercls extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Blogmodels\Anuncio::class, 20)->create();
     }
 }

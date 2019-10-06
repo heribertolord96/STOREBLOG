@@ -7,12 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Blogmodels\PromocionTag::class, function (Faker $faker) {
     
-    $title = $faker->sentence(4);
-
+    
     return [
         
-        'promocion_id' 	=> rand(1,50),
-        'tag_id' 	=> rand(1,50),
+        'promocion_id' 	=> rand(1,40),
+        'tag_id' 	=> rand(1,120),
         
     ];
 });

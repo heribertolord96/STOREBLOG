@@ -57,9 +57,9 @@
                         <div class="card-body">
                             <p>Etiquetas :</p>
                             <div class ="card-body">
-                                    @foreach($anuncio->tags as $tag)
-                                    <a href="{{ route('tag', $tag->slug) }}">
-                                        {{ $tag->nombre }}
+                                    @foreach($anuncio->tags as $tags)
+                                    <a href="{{route('tag',$anuncio->tag->slug)}}">
+                                     {{ $tag->nombre }}</a>
                                     </a>
                                     @endforeach
                             </div>

@@ -9,31 +9,50 @@ use App\Blogmodels\Tienda;
 use App\Blogmodels\Tag;
 use App\Blogmodels\Producto;
 use App\Blogmodels\Evento;
+use App\Blogmodels\Categoria;
+use App\Blogmodels\Departamento;
 
 
 class PageController extends Controller
 {
+// Parent functions
+        public function tienda($slug)
+        {
+            $tienda = Tienda::where('slug', $slug)->pluck('id')->first();  
+            $productos = Producto::where('tienda_id', $tienda)
+                ->orderBy('id', 'DESC')->paginate(3);        
+            return view('admin.productos.tienda_prod', compact('productos'));
+        }
+        public function categoria($slug)
+        {
+            $categoria = Categoria::where('slug', $slug)->pluck('id')->first();
+            $productos = Producto::where('categoria_id', $categoria)
+                ->orderBy('id', 'DESC')->paginate(3);
+            return view('admin.productos.index', compact('productos'));
+        }
+        public function departamento($slug)
+        {
+            $departamento = Departamento::where('slug', $slug)->pluck('id')->first();
+            $productos = Producto::where('departamento_id', $departamento)
+                ->orderBy('id', 'DESC')->paginate(3);
+            return view('admin.productos.index', compact('productos'));
+            $producto = Producto::where('slug', $slug)->first();
+                return view('admin.productos.show', compact('producto'));
+        }
+// Parent functions
     //productos
         public function productos()
         {
             $productos = Producto::orderBy('id', 'DESC')->paginate(3);
             return view('admin.productos.index', compact('productos'));
         }  
-        public function articulo($slug)
+        public function producto($slug)
         {
             $producto = Producto::where('slug', $slug)->first();
             return view('admin.productos.show', compact('producto'));
         }
     //    
 
-    public function tienda($slug)
-    {
-        $tienda = Tienda::where('slug', $slug)->pluck('id')->first();
-        $productos = Producto::where('tienda_id', $tienda)
-            ->orderBy('id', 'DESC')->paginate(3);
-        return view('admin.productos.index', compact('productos'));
-    }
-    /*
     public function tag($slug){ 
         $productos = Producto::whereHas('tags', function($query) use ($slug) {
             $query->where('slug', $slug);
@@ -41,7 +60,7 @@ class PageController extends Controller
         ->orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(3);
 
         return view('admin.productos.index', compact('productos'));
-    }*/
+    }
 
     
     public function promos($slug)

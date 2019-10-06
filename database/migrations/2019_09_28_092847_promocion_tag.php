@@ -15,7 +15,6 @@ class PromocionTag extends Migration
     {
         Schema::create('promocion_tags', function (Blueprint $table) {
             $table->Increments('id');
-            
             $table->unsignedInteger('promocion_id')->nullable();
             $table->unsignedInteger('tag_id')->nullable();
             
